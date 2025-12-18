@@ -193,7 +193,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/search.js [app-client] (ecmascript) <export default as Search>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$square$2d$pen$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/square-pen.js [app-client] (ecmascript) <export default as Edit>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$history$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__History$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/history.js [app-client] (ecmascript) <export default as History>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/x.js [app-client] (ecmascript) <export default as X>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/download.js [app-client] (ecmascript) <export default as Download>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$up$2d$down$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowUpDown$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/arrow-up-down.js [app-client] (ecmascript) <export default as ArrowUpDown>");
@@ -929,25 +928,6 @@ function UsersList() {
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                    onClick: ()=>handleViewHistory(user),
-                                                                    className: "px-3 py-1.5 bg-muted/50 border border-border/50 rounded-lg text-foreground hover:bg-muted transition-all flex items-center gap-1.5 text-xs",
-                                                                    title: "View History",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$history$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__History$3e$__["History"], {
-                                                                            className: "w-3.5 h-3.5"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/components/pages/users-list.tsx",
-                                                                            lineNumber: 495,
-                                                                            columnNumber: 29
-                                                                        }, this),
-                                                                        "History"
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/components/pages/users-list.tsx",
-                                                                    lineNumber: 490,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                     onClick: ()=>handleDeleteUser(user),
                                                                     className: "px-3 py-1.5 bg-destructive/10 border border-destructive/30 rounded-lg text-destructive hover:bg-destructive/20 transition-all flex items-center gap-1.5 text-xs",
                                                                     title: "Delete User",
@@ -956,14 +936,14 @@ function UsersList() {
                                                                             className: "w-3.5 h-3.5"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/pages/users-list.tsx",
-                                                                            lineNumber: 503,
+                                                                            lineNumber: 495,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         "Delete"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                                    lineNumber: 498,
+                                                                    lineNumber: 490,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
@@ -1015,7 +995,7 @@ function UsersList() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 516,
+                                    lineNumber: 508,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1028,7 +1008,7 @@ function UsersList() {
                                             children: "Previous"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 520,
+                                            lineNumber: 512,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1040,7 +1020,7 @@ function UsersList() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 527,
+                                            lineNumber: 519,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1050,19 +1030,19 @@ function UsersList() {
                                             children: "Next"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 530,
+                                            lineNumber: 522,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 519,
+                                    lineNumber: 511,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/users-list.tsx",
-                            lineNumber: 515,
+                            lineNumber: 507,
                             columnNumber: 13
                         }, this)
                     ]
@@ -1073,12 +1053,12 @@ function UsersList() {
                         children: "No users found matching your criteria"
                     }, void 0, false, {
                         fileName: "[project]/components/pages/users-list.tsx",
-                        lineNumber: 542,
+                        lineNumber: 534,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/pages/users-list.tsx",
-                    lineNumber: 541,
+                    lineNumber: 533,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
@@ -1099,7 +1079,7 @@ function UsersList() {
                                     children: "Edit User Profile"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 552,
+                                    lineNumber: 544,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1109,18 +1089,18 @@ function UsersList() {
                                         className: "w-6 h-6"
                                     }, void 0, false, {
                                         fileName: "[project]/components/pages/users-list.tsx",
-                                        lineNumber: 557,
+                                        lineNumber: 549,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 553,
+                                    lineNumber: 545,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/users-list.tsx",
-                            lineNumber: 551,
+                            lineNumber: 543,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1133,7 +1113,7 @@ function UsersList() {
                                             children: "Full Name"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 562,
+                                            lineNumber: 554,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1146,13 +1126,13 @@ function UsersList() {
                                             className: "w-full px-4 py-2.5 bg-muted/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 563,
+                                            lineNumber: 555,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 561,
+                                    lineNumber: 553,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1162,7 +1142,7 @@ function UsersList() {
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 571,
+                                            lineNumber: 563,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1173,7 +1153,7 @@ function UsersList() {
                                             className: "w-full px-4 py-2.5 bg-muted/30 border border-border rounded-lg text-muted-foreground cursor-not-allowed opacity-60"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 572,
+                                            lineNumber: 564,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1181,13 +1161,13 @@ function UsersList() {
                                             children: "Email cannot be changed"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 579,
+                                            lineNumber: 571,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 570,
+                                    lineNumber: 562,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1197,7 +1177,7 @@ function UsersList() {
                                             children: "Phone"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 582,
+                                            lineNumber: 574,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1210,13 +1190,13 @@ function UsersList() {
                                             className: "w-full px-4 py-2.5 bg-muted/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 583,
+                                            lineNumber: 575,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 581,
+                                    lineNumber: 573,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1226,7 +1206,7 @@ function UsersList() {
                                             children: "Membership Level"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 591,
+                                            lineNumber: 583,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1241,47 +1221,47 @@ function UsersList() {
                                                     children: "BLANCO MEMBER"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 597,
+                                                    lineNumber: 589,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                     children: "REPOSADO MEMBER"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 598,
+                                                    lineNumber: 590,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                     children: "ANEJO MEMBER"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 599,
+                                                    lineNumber: 591,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                     children: "SECRET MEMBER"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 600,
+                                                    lineNumber: 592,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                     children: "No Membership"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 601,
+                                                    lineNumber: 593,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 592,
+                                            lineNumber: 584,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 590,
+                                    lineNumber: 582,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1291,7 +1271,7 @@ function UsersList() {
                                             children: "Status"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 605,
+                                            lineNumber: 597,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1306,33 +1286,33 @@ function UsersList() {
                                                     children: "Active"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 611,
+                                                    lineNumber: 603,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                     children: "Inactive"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 612,
+                                                    lineNumber: 604,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                     children: "Suspended"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 613,
+                                                    lineNumber: 605,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 606,
+                                            lineNumber: 598,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 604,
+                                    lineNumber: 596,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1345,7 +1325,7 @@ function UsersList() {
                                                     children: "Membership Date"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 618,
+                                                    lineNumber: 610,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1359,13 +1339,13 @@ function UsersList() {
                                                     placeholder: "DD/MM/YYYY"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 619,
+                                                    lineNumber: 611,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 617,
+                                            lineNumber: 609,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1375,7 +1355,7 @@ function UsersList() {
                                                     children: "Total Spent"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 628,
+                                                    lineNumber: 620,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1388,19 +1368,19 @@ function UsersList() {
                                                     className: "w-full px-4 py-2.5 bg-muted/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 629,
+                                                    lineNumber: 621,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 627,
+                                            lineNumber: 619,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 616,
+                                    lineNumber: 608,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1412,7 +1392,7 @@ function UsersList() {
                                             children: "Cancel"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 638,
+                                            lineNumber: 630,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1421,30 +1401,30 @@ function UsersList() {
                                             children: "Save Changes"
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 644,
+                                            lineNumber: 636,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 637,
+                                    lineNumber: 629,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/users-list.tsx",
-                            lineNumber: 560,
+                            lineNumber: 552,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/pages/users-list.tsx",
-                    lineNumber: 550,
+                    lineNumber: 542,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/pages/users-list.tsx",
-                lineNumber: 549,
+                lineNumber: 541,
                 columnNumber: 9
             }, this),
             userHistory && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1460,7 +1440,7 @@ function UsersList() {
                                     children: "Transaction History"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 660,
+                                    lineNumber: 652,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1470,18 +1450,18 @@ function UsersList() {
                                         className: "w-6 h-6"
                                     }, void 0, false, {
                                         fileName: "[project]/components/pages/users-list.tsx",
-                                        lineNumber: 665,
+                                        lineNumber: 657,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 661,
+                                    lineNumber: 653,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/users-list.tsx",
-                            lineNumber: 659,
+                            lineNumber: 651,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1495,7 +1475,7 @@ function UsersList() {
                                             children: userHistory.name
                                         }, void 0, false, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 670,
+                                            lineNumber: 662,
                                             columnNumber: 17
                                         }, this),
                                         " • ",
@@ -1503,7 +1483,7 @@ function UsersList() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 669,
+                                    lineNumber: 661,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1532,7 +1512,7 @@ function UsersList() {
                                                     children: item.icon
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 679,
+                                                    lineNumber: 671,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1542,7 +1522,7 @@ function UsersList() {
                                                             children: item.action
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/pages/users-list.tsx",
-                                                            lineNumber: 681,
+                                                            lineNumber: 673,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1550,41 +1530,41 @@ function UsersList() {
                                                             children: item.date
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/pages/users-list.tsx",
-                                                            lineNumber: 682,
+                                                            lineNumber: 674,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/pages/users-list.tsx",
-                                                    lineNumber: 680,
+                                                    lineNumber: 672,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, idx, true, {
                                             fileName: "[project]/components/pages/users-list.tsx",
-                                            lineNumber: 678,
+                                            lineNumber: 670,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 672,
+                                    lineNumber: 664,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/users-list.tsx",
-                            lineNumber: 668,
+                            lineNumber: 660,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/pages/users-list.tsx",
-                    lineNumber: 658,
+                    lineNumber: 650,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/pages/users-list.tsx",
-                lineNumber: 657,
+                lineNumber: 649,
                 columnNumber: 9
             }, this),
             deletingUser && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1597,7 +1577,7 @@ function UsersList() {
                             children: "Delete User?"
                         }, void 0, false, {
                             fileName: "[project]/components/pages/users-list.tsx",
-                            lineNumber: 695,
+                            lineNumber: 687,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1614,14 +1594,14 @@ function UsersList() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 698,
+                                    lineNumber: 690,
                                     columnNumber: 15
                                 }, this),
                                 "? This action cannot be undone."
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/users-list.tsx",
-                            lineNumber: 696,
+                            lineNumber: 688,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1634,7 +1614,7 @@ function UsersList() {
                                     children: "Cancel"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 702,
+                                    lineNumber: 694,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1647,7 +1627,7 @@ function UsersList() {
                                                 className: "w-4 h-4 animate-spin"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/pages/users-list.tsx",
-                                                lineNumber: 716,
+                                                lineNumber: 708,
                                                 columnNumber: 21
                                             }, this),
                                             "Deleting..."
@@ -1655,24 +1635,24 @@ function UsersList() {
                                     }, void 0, true) : "Delete"
                                 }, void 0, false, {
                                     fileName: "[project]/components/pages/users-list.tsx",
-                                    lineNumber: 709,
+                                    lineNumber: 701,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/pages/users-list.tsx",
-                            lineNumber: 701,
+                            lineNumber: 693,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/pages/users-list.tsx",
-                    lineNumber: 694,
+                    lineNumber: 686,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/pages/users-list.tsx",
-                lineNumber: 693,
+                lineNumber: 685,
                 columnNumber: 9
             }, this)
         ]

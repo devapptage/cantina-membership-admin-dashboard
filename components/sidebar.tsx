@@ -11,7 +11,7 @@ const navItems = [
   { icon: Package, label: "Merchandise", href: "/merchandise" },
   { icon: ShoppingCart, label: "Orders", href: "/orders" },
   { icon: Bell, label: "Notifications", href: "/notifications" },
-  { icon: Settings, label: "Settings", href: "/settings" },
+  // { icon: Settings, label: "Settings", href: "/settings" },
 ]
 
 export function Sidebar({ open, onToggle }: { open: boolean; onToggle: (open: boolean) => void }) {

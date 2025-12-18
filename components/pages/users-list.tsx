@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Edit, History, X, Calendar, TrendingUp, Download, ArrowUpDown, Loader2, Trash2, User as UserIcon, Eye } from "lucide-react"
+import { Search, Edit, X, Calendar, TrendingUp, Download, ArrowUpDown, Loader2, Trash2, User as UserIcon, Eye } from "lucide-react"
 import { usersService } from "@/lib/api/users"
 import type { User } from "@/lib/types/users"
 import { useRouter } from "next/navigation"
@@ -486,14 +486,6 @@ export function UsersList() {
                           >
                             <Edit className="w-3.5 h-3.5" />
                             Edit
-                          </button>
-                          <button
-                            onClick={() => handleViewHistory(user)}
-                            className="px-3 py-1.5 bg-muted/50 border border-border/50 rounded-lg text-foreground hover:bg-muted transition-all flex items-center gap-1.5 text-xs"
-                            title="View History"
-                          >
-                            <History className="w-3.5 h-3.5" />
-                            History
                           </button>
                           <button
                             onClick={() => handleDeleteUser(user)}

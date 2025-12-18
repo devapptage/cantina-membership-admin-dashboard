@@ -58,7 +58,7 @@ export function RecentActivity({ activities, isLoading }: RecentActivityProps) {
       <h2 className="text-xl font-bold">Recent Activity</h2>
       <div className="bg-card border border-border rounded-lg overflow-hidden">
         {isLoading ? (
-          <div className="space-y-0">
+        <div className="space-y-0">
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
@@ -84,22 +84,22 @@ export function RecentActivity({ activities, isLoading }: RecentActivityProps) {
                   key={idx}
                   className={`p-4 md:p-6 flex items-start gap-4 ${
                     idx !== safeActivities.length - 1 ? "border-b border-border" : ""
-                  }`}
-                >
-                  <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
-                    <Icon className="w-5 h-5 text-accent" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-foreground">{activity.title}</p>
-                    <p className="text-sm text-muted-foreground mt-1">{activity.description}</p>
-                  </div>
+                }`}
+              >
+                <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
+                  <Icon className="w-5 h-5 text-accent" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-medium text-foreground">{activity.title}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{activity.description}</p>
+                </div>
                   <p className="text-xs text-muted-foreground whitespace-nowrap">
                     {formatTimeAgo(activity.timestamp)}
                   </p>
-                </div>
-              )
-            })}
-          </div>
+              </div>
+            )
+          })}
+        </div>
         ) : (
           <div className="p-8 text-center text-muted-foreground">
             <p>No recent activity</p>
