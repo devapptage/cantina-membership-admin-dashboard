@@ -2,10 +2,12 @@
 const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
+
   },
   images: {
     unoptimized: true,
   },
+  output: 'export',
  
 }
 
