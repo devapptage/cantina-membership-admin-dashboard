@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///E:/Projects/v0-cantina-memeber-ship-admin-panel-main/app/%28protected%29/orders/layout.tsx"],"sourcesContent":["import type React from \"react\"\nexport default function OrdersLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return <>{children}</>\n}\n"],"names":[],"mappings":";;;;;;AACe,SAAS,aAAa,EACnC,QAAQ,EAGT;IACC,qBAAO;kBAAG;;AACZ"}}]
+}

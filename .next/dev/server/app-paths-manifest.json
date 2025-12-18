@@ -1,0 +1,7 @@
+{
+  "/(protected)/notifications/page": "app/(protected)/notifications/page.js",
+  "/(protected)/settings/page": "app/(protected)/settings/page.js",
+  "/(protected)/users/[id]/page": "app/(protected)/users/[id]/page.js",
+  "/(protected)/users/page": "app/(protected)/users/page.js",
+  "/page": "app/page.js"
+}
