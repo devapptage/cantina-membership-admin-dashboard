@@ -658,10 +658,6 @@
     height: calc(var(--spacing) * 24);
   }
 
-  .h-120 {
-    height: calc(var(--spacing) * 120);
-  }
-
   .h-auto {
     height: auto;
   }
@@ -764,10 +760,6 @@
 
   .w-48 {
     width: calc(var(--spacing) * 48);
-  }
-
-  .w-60 {
-    width: calc(var(--spacing) * 60);
   }
 
   .w-64 {
