@@ -14,7 +14,7 @@ class ApiClient {
 
     constructor(baseURL?: string) {
         // Use environment variable or default to your API endpoint
-        this.baseURL = baseURL || process.env.NEXT_PUBLIC_API_URL || 'https://mjzctqcx-3000.asse.devtunnels.ms'
+        this.baseURL = baseURL || 'https://cantina-membership-app.vercel.app'
     }
 
 
@@ -55,8 +55,8 @@ class ApiClient {
             let errorMessage: string
             if (isJson && data?.error) {
                 // tRPC error format: { error: { message, code, data } }
-                errorMessage = typeof data.error === 'string' 
-                    ? data.error 
+                errorMessage = typeof data.error === 'string'
+                    ? data.error
                     : data.error?.message || 'An error occurred'
             } else if (isJson && data?.message) {
                 errorMessage = typeof data.message === 'string' ? data.message : 'An error occurred'
@@ -114,7 +114,7 @@ class ApiClient {
             console.log('[API Client] Making request to:', url)
             console.log('[API Client] Request body:', fetchOptions.body)
             console.log('[API Client] Request headers:', defaultHeaders)
-            
+
             const response = await fetch(url, {
                 ...fetchOptions,
                 headers: defaultHeaders,
@@ -122,7 +122,7 @@ class ApiClient {
 
             console.log('[API Client] Response status:', response.status)
             console.log('[API Client] Response ok:', response.ok)
-            
+
             return this.handleResponse<T>(response)
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : 'Network error occurred'

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card } from "@/components/ui/card"
+import Image from "next/image"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -31,14 +32,14 @@ export default function LoginPage() {
         router.refresh() // Refresh to update auth state
       } else {
         // Extract error message as string
-        const errorMsg = typeof response.error === 'string' 
-          ? response.error 
+        const errorMsg = typeof response.error === 'string'
+          ? response.error
           : typeof response.error === 'object' && (response.error as any)?.message
-          ? (response.error as any).message
-          : typeof response.message === 'string'
-          ? response.message
-          : "Invalid email or password"
-        
+            ? (response.error as any).message
+            : typeof response.message === 'string'
+              ? response.message
+              : "Invalid email or password"
+
         setError(errorMsg)
         console.log("[Auth] Login failed:", errorMsg)
       }
@@ -52,17 +53,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4">
+    <div className="min-h-screen flex justify-center px-4 pt-40" >
       <div className="w-full max-w-md">
         {/* Logo Section */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-accent mb-4">
-            <svg className="w-6 h-6 text-accent-foreground" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-            </svg>
+          <div className="inline-flex items-center justify-center rounded-lg bg-accent mb-4 w-40">
+            <Image src={"/bg.png"} alt="Logo" className="w-full h-full object-contain" width={20} height={20} />
           </div>
-          <h1 className="text-3xl font-bold text-foreground">Cantina Admin</h1>
-          <p className="text-muted-foreground mt-2">Membership Management Dashboard</p>
+          <h1 className="text-3xl font-bold text-foreground bg-background">Cantina Admin</h1>
+          <p className="text-muted-foreground mt-2  bg-background">Membership Management Dashboard</p>
         </div>
 
         {/* Login Card */}
@@ -110,7 +109,7 @@ export default function LoginPage() {
             )}
 
             {/* Demo Credentials Info */}
-            <div className="p-4 rounded-lg bg-accent/10 border border-accent/20">
+            {/* <div className="p-4 rounded-lg bg-accent/10 border border-accent/20">
               <p className="text-sm text-muted-foreground mb-2">Demo Credentials:</p>
               <div className="space-y-1 font-mono text-xs">
                 <p className="text-foreground">
@@ -120,7 +119,7 @@ export default function LoginPage() {
                   Password: <span className="text-accent">admin1234</span>
                 </p>
               </div>
-            </div>
+            </div> */}
 
             {/* Submit Button */}
             <Button
@@ -133,10 +132,10 @@ export default function LoginPage() {
           </form>
 
           {/* Footer */}
-          <div className="mt-6 text-center text-xs text-muted-foreground">
+          {/* <div className="mt-6 text-center text-xs text-muted-foreground">
             <p>This is a demo admin dashboard</p>
             <p>Use the credentials above to access</p>
-          </div>
+          </div> */}
         </Card>
       </div>
     </div>
