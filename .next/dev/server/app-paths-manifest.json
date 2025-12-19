@@ -1,11 +1,1 @@
-{
-  "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/(protected)/merchandise/page": "app/(protected)/merchandise/page.js",
-  "/(protected)/notifications/page": "app/(protected)/notifications/page.js",
-  "/(protected)/orders/page": "app/(protected)/orders/page.js",
-  "/(protected)/settings/page": "app/(protected)/settings/page.js",
-  "/(protected)/users/[id]/page": "app/(protected)/users/[id]/page.js",
-  "/(protected)/users/page": "app/(protected)/users/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js"
-}
+{}
