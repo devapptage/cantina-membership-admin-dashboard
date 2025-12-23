@@ -391,7 +391,7 @@ export function UsersList() {
         {[
           { label: "Total Users", value: pagination.total.toString(), icon: "👥" },
           {
-            label: "Active Members",
+            label: "Active MemberShip",
             value: displayUsers.filter((u) => u.status === "Active").length.toString(),
             icon: "✓",
           },
@@ -452,10 +452,10 @@ export function UsersList() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
                           className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                            user.status === "Active" ? "bg-accent/10 text-accent" : "bg-muted text-muted-foreground"
+                            "bg-accent/10 text-accent"
                           }`}
                         >
-                          {user.status}
+                          Active
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">

@@ -336,7 +336,7 @@ export default function NotificationsPage() {
                         )}
                       </div>
                     </div>
-                    <div className="flex gap-2 flex-shrink-0">
+                    {/* <div className="flex gap-2 flex-shrink-0">
                       <button
                         onClick={() => handleEditNotification(notif)}
                         className="p-2 hover:bg-accent/10 rounded-lg transition-all"
@@ -349,7 +349,7 @@ export default function NotificationsPage() {
                       >
                         <Trash2 className="w-4 h-4 text-destructive" />
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               )
