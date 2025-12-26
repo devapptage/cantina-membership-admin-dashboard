@@ -3,6 +3,7 @@
   "/(protected)/merchandise/page": "app/(protected)/merchandise/page.js",
   "/(protected)/notifications/page": "app/(protected)/notifications/page.js",
   "/(protected)/orders/page": "app/(protected)/orders/page.js",
+  "/(protected)/settings/page": "app/(protected)/settings/page.js",
   "/(protected)/users/page": "app/(protected)/users/page.js",
   "/page": "app/page.js"
 }

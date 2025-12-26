@@ -100,7 +100,7 @@ export default function SettingsPage() {
               </button>
             </div>
 
-            <div className="flex items-center justify-between p-4 hover:bg-accent/5 rounded-lg transition-all">
+            {/* <div className="flex items-center justify-between p-4 hover:bg-accent/5 rounded-lg transition-all">
               <div className="flex items-center gap-3">
                 <Users className="w-5 h-5 text-accent" />
                 <div>
@@ -120,11 +120,11 @@ export default function SettingsPage() {
                   }`}
                 />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
 
-        <div className="bg-card border border-border/30 rounded-xl p-8 space-y-6">
+        {/* <div className="bg-card border border-border/30 rounded-xl p-8 space-y-6">
           <div className="border-b border-border/30 pb-6">
             <h2 className="text-2xl font-bold text-foreground mb-2">Security Settings</h2>
             <p className="text-muted-foreground text-sm">Manage security and access controls</p>
@@ -185,9 +185,9 @@ export default function SettingsPage() {
               <p className="text-xs text-muted-foreground mt-2">Automatically delete activity logs after this period</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="bg-card border border-border/30 rounded-xl p-8 space-y-6">
+        {/* <div className="bg-card border border-border/30 rounded-xl p-8 space-y-6">
           <div className="border-b border-border/30 pb-6">
             <h2 className="text-2xl font-bold text-foreground mb-2">System Information</h2>
             <p className="text-muted-foreground text-sm">Current system status and metrics</p>
@@ -206,7 +206,7 @@ export default function SettingsPage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <div className="flex gap-3">
           <button
@@ -216,10 +216,10 @@ export default function SettingsPage() {
             <Save className="w-4 h-4" />
             Save All Settings
           </button>
-          <button className="px-6 py-3 border border-border rounded-lg text-foreground hover:bg-muted transition-all flex items-center gap-2 font-medium">
+          {/* <button className="px-6 py-3 border border-border rounded-lg text-foreground hover:bg-muted transition-all flex items-center gap-2 font-medium">
             <LogOut className="w-4 h-4" />
             Reset to Defaults
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
