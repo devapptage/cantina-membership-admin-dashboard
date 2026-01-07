@@ -16,31 +16,42 @@ export function TopBar() {
   }
 
   return (
-    <div className="bg-card border-b border-border px-4 md:px-8 py-4 flex items-center justify-between shadow-sm">
-      <div className="flex items-center gap-4">
-        <div className="text-sm text-muted-foreground font-medium">Welcome back, Admin</div>
+    <div className="bg-card border-b border-border px-4 md:px-8 py-3 md:py-4 flex items-center justify-between shadow-sm">
+      <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
+        {/* Logo for mobile - shows when sidebar is collapsed */}
+        <div className="flex items-center gap-2 md:hidden">
+          <div className="relative w-8 h-8 flex-shrink-0">
+            <img
+              src="/placeholder-logo.svg"
+              alt="Cantina Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <span className="text-sm font-bold text-foreground">Cantina</span>
+        </div>
+        <div className="text-xs md:text-sm text-muted-foreground font-medium truncate">Welcome back, Admin</div>
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-2 md:gap-6 flex-shrink-0">
         <Link
           href="/notifications"
-          className="relative p-2 hover:bg-muted rounded-lg transition-all duration-200 group"
+          className="relative p-1.5 md:p-2 hover:bg-muted rounded-lg transition-all duration-200 group"
         >
-          <Bell className="w-5 h-5 text-muted-foreground group-hover:text-accent" />
+          <Bell className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-accent" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-accent rounded-full"></span>
         </Link>
 
-        <Link href="/settings" className="p-2 hover:bg-muted rounded-lg transition-all duration-200 group">
-          <Settings className="w-5 h-5 text-muted-foreground group-hover:text-accent" />
+        <Link href="/settings" className="p-1.5 md:p-2 hover:bg-muted rounded-lg transition-all duration-200 group">
+          <Settings className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground group-hover:text-accent" />
         </Link>
 
         <div className="relative">
           <button
             onClick={() => setShowLogoutMenu(!showLogoutMenu)}
-            className="p-2 hover:bg-muted rounded-lg transition-all duration-200"
+            className="p-1.5 md:p-2 hover:bg-muted rounded-lg transition-all duration-200"
           >
-            <div className="w-9 h-9 bg-gradient-to-br from-accent to-accent/70 rounded-full flex items-center justify-center shadow-md">
-              <User className="w-5 h-5 text-accent-foreground" />
+            <div className="w-7 h-7 md:w-9 md:h-9 bg-gradient-to-br from-accent to-accent/70 rounded-full flex items-center justify-center shadow-md">
+              <User className="w-4 h-4 md:w-5 md:h-5 text-accent-foreground" />
             </div>
           </button>
 

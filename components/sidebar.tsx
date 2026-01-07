@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation"
 import { Menu, LayoutDashboard, Users, Package, Bell, Settings, LogOut, ShoppingCart } from "lucide-react"
 import { useState } from "react"
 import { useAuth } from "./auth-context"
+import Image from "next/image"
 
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/" },
@@ -35,27 +36,47 @@ export function Sidebar({ open, onToggle }: { open: boolean; onToggle: (open: bo
     <>
       <button
         onClick={() => onToggle(!open)}
-        className="fixed top-4 left-4 z-50 md:hidden bg-card p-2 rounded-lg border border-border hover:bg-muted transition-colors"
+        className="fixed top-4 left-4 z-50 md:hidden bg-card p-2 rounded-lg border border-border hover:bg-muted transition-colors shadow-lg"
       >
         <Menu className="w-5 h-5" />
       </button>
 
+      {/* Mobile overlay */}
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={() => onToggle(false)}
+        />
+      )}
+
       <div
-        className={`${
-          open ? "w-64" : "w-0"
-        } md:w-64 bg-card border-r border-border transition-all duration-300 overflow-hidden flex flex-col shadow-lg`}
+        className={`${open ? "translate-x-0" : "-translate-x-full"
+          } md:translate-x-0 fixed md:relative w-64 md:w-64 bg-card border-r border-border transition-all duration-300 flex flex-col shadow-lg z-50 h-screen`}
       >
-        <div className="px-6 py-8 border-b border-border/50">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-accent to-accent/60 rounded-lg flex items-center justify-center">
-              <Package className="w-6 h-6 text-accent-foreground" />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold text-foreground">Cantina</h1>
-              <p className="text-xs text-muted-foreground">Admin Panel</p>
-            </div>
-          </div>
-        </div>
+        <div className="px-4 md:px-6 py-6 md:py-8 border-b border-border/50">
+        <div className="flex items-center gap-4">
+  {/* Logo */}
+  <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden flex-shrink-0">
+    <Image
+      src="/bg.png"
+      alt="Logo"
+      width={200}
+      height={200}
+      className="w-full h-full object-cover"
+      priority
+    />
+  </div>
+
+  {/* Text */}
+  <div className="min-w-0">
+    <h1 className="text-base md:text-lg font-bold text-foreground leading-tight truncate">
+      Cantina
+    </h1>
+    <p className="text-xs md:text-sm text-muted-foreground truncate">
+      Admin Panel
+    </p>
+  </div>
+</div></div>
 
         <nav className="flex-1 overflow-y-auto p-4 space-y-1">
           {navItems.map((item) => {
@@ -66,9 +87,8 @@ export function Sidebar({ open, onToggle }: { open: boolean; onToggle: (open: bo
                 key={item.href}
                 href={item.href}
                 onClick={() => onToggle(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
-                  isActive ? "bg-primary text-primary-foreground shadow-md" : "text-foreground hover:bg-muted/50"
-                }`}
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${isActive ? "bg-primary text-primary-foreground shadow-md" : "text-foreground hover:bg-muted/50"
+                  }`}
               >
                 <Icon className={`w-5 h-5 ${isActive ? "" : "group-hover:text-accent"}`} />
                 <span className="font-medium">{item.label}</span>
@@ -87,8 +107,6 @@ export function Sidebar({ open, onToggle }: { open: boolean; onToggle: (open: bo
           </button>
         </div>
       </div>
-
-      {open && <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => onToggle(false)} />}
 
       {showSignOutConfirm && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">

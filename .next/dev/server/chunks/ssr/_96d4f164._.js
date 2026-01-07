@@ -12,82 +12,6 @@ module.exports = [
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/api/client.ts [app-ssr] (ecmascript)");
 ;
 class MerchandiseService {
-    getBaseUrl() {
-        return (("TURBOPACK compile-time value", "https://cantina-membership-app.vercel.app/") || 'https://cantina-membership-app.vercel.app').replace(/\/$/, '');
-    }
-    getAuthToken() {
-        if ("TURBOPACK compile-time truthy", 1) return null;
-        //TURBOPACK unreachable
-        ;
-    }
-    extractUploadUrls(uploadData) {
-        if (!uploadData) return [];
-        if (Array.isArray(uploadData)) return uploadData;
-        if (Array.isArray(uploadData?.urls)) return uploadData.urls;
-        if (Array.isArray(uploadData?.data?.urls)) return uploadData.data.urls;
-        if (typeof uploadData?.url === 'string') return [
-            uploadData.url
-        ];
-        if (Array.isArray(uploadData?.data)) return uploadData.data;
-        if (Array.isArray(uploadData?.images)) return uploadData.images;
-        if (Array.isArray(uploadData?.data?.images)) return uploadData.data.images;
-        return [];
-    }
-    async uploadImages(images) {
-        try {
-            const formData = new FormData();
-            formData.append('type', 'product');
-            images.forEach((file)=>formData.append('images[]', file));
-            const baseURL = this.getBaseUrl();
-            const token = this.getAuthToken();
-            const response = await fetch(`${baseURL}/api/upload/image`, {
-                method: 'POST',
-                headers: {
-                    ...token && {
-                        Authorization: `Bearer ${token}`
-                    }
-                },
-                body: formData
-            });
-            const contentType = response.headers.get('content-type');
-            const isJson = contentType?.includes('application/json');
-            let uploadData;
-            try {
-                uploadData = isJson ? await response.json() : await response.text();
-            } catch (error) {
-                throw new Error('Failed to parse upload response');
-            }
-            if (!response.ok) {
-                const errorMessage = isJson && uploadData?.error?.message || isJson && uploadData?.error || isJson && uploadData?.message || uploadData || `HTTP error! status: ${response.status}`;
-                return {
-                    success: false,
-                    error: errorMessage,
-                    message: errorMessage
-                };
-            }
-            const urls = this.extractUploadUrls(uploadData).filter((url)=>typeof url === 'string');
-            if (!urls.length) {
-                const errorMessage = 'No image URLs returned from upload';
-                return {
-                    success: false,
-                    error: errorMessage,
-                    message: errorMessage
-                };
-            }
-            return {
-                success: true,
-                urls
-            };
-        } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred while uploading images';
-            console.error('[Merchandise Service] Upload images error:', error);
-            return {
-                success: false,
-                error: errorMessage,
-                message: errorMessage
-            };
-        }
-    }
     /**
    * Get all products with pagination
    */ async getAllProducts(params) {
@@ -173,47 +97,77 @@ class MerchandiseService {
    * Create new product with FormData (for file uploads)
    */ async createProduct(data) {
         try {
-            let imageUrls = [];
-            if (data.images && data.images.length > 0) {
-                const uploadResult = await this.uploadImages(data.images);
-                if (!uploadResult.success || !uploadResult.urls) {
-                    const errorMessage = uploadResult.error || 'Failed to upload product images';
-                    return {
-                        success: false,
-                        error: errorMessage,
-                        message: errorMessage
-                    };
-                }
-                imageUrls = uploadResult.urls;
+            const formData = new FormData();
+            // Add text fields
+            formData.append('name', data.name);
+            formData.append('description', data.description);
+            formData.append('price', String(data.price));
+            formData.append('category', data.category);
+            formData.append('stockQuantity', String(data.stockQuantity));
+            // Add optional fields
+            if (data.availableForPurchase !== undefined) {
+                formData.append('availableForPurchase', String(data.availableForPurchase));
             }
-            const payload = {
-                name: data.name.trim(),
-                description: data.description.trim(),
-                price: Number(data.price),
-                category: data.category,
-                stockQuantity: Number(data.stockQuantity),
-                availableForPurchase: data.availableForPurchase ?? true,
-                inStock: data.inStock ?? Number(data.stockQuantity) > 0,
-                images: imageUrls,
-                ...data.sizes && data.sizes.length > 0 ? {
-                    sizes: data.sizes
-                } : {},
-                ...data.colors && data.colors.length > 0 ? {
-                    colors: data.colors
-                } : {}
-            };
-            const tRPCBody = {
-                "0": {
-                    "json": payload
-                }
-            };
-            console.log('[Merchandise Service] Creating product with payload:', payload);
-            const response = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["apiClient"].post('/api/trpc/admin.merchandise.create', payload);
+            if (data.inStock !== undefined) {
+                formData.append('inStock', String(data.inStock));
+            }
+            // Add sizes (array)
+            if (data.sizes && data.sizes.length > 0) {
+                data.sizes.forEach((size)=>{
+                    formData.append('sizes', size);
+                });
+            }
+            // Add colors (array)
+            if (data.colors && data.colors.length > 0) {
+                data.colors.forEach((color)=>{
+                    formData.append('colors', color);
+                });
+            }
+            // Add images (array)
+            if (data.images && data.images.length > 0) {
+                data.images.forEach((image)=>{
+                    formData.append('images[]', image);
+                });
+            }
+            console.log('[Merchandise Service] Creating product with FormData');
+            const baseURL = ("TURBOPACK compile-time value", "https://cantina-membership-app.vercel.app/") || 'https://mjzctqcx-3000.asse.devtunnels.ms';
+            const token = ("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : null;
+            const response = await fetch(`${baseURL}api/admin/products/create`, {
+                method: 'POST',
+                headers: {
+                    ...token && {
+                        Authorization: `Bearer ${token}`
+                    }
+                },
+                body: formData
+            });
+            const contentType = response.headers.get('content-type');
+            const isJson = contentType?.includes('application/json');
+            let responseData;
+            try {
+                responseData = isJson ? await response.json() : await response.text();
+            } catch (error) {
+                throw new Error('Failed to parse response');
+            }
+            if (!response.ok) {
+                const errorMessage = isJson && responseData?.error?.message || isJson && responseData?.error || isJson && responseData?.message || responseData || `HTTP error! status: ${response.status}`;
+                return {
+                    success: false,
+                    error: errorMessage,
+                    message: errorMessage
+                };
+            }
+            // Handle REST API response format
+            let productData = responseData;
+            if (isJson && responseData?.data) {
+                productData = responseData.data;
+            } else if (isJson && responseData) {
+                productData = responseData;
+            }
             return {
-                success: !!response.success,
-                data: response.data,
-                error: response.error,
-                message: response.message || (response.success ? 'Product created successfully' : response.error)
+                success: true,
+                data: productData,
+                message: 'Product created successfully'
             };
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
@@ -229,50 +183,79 @@ class MerchandiseService {
    * Update product with FormData (for file uploads)
    */ async updateProduct(data) {
         try {
-            let imageUrls = [];
-            if (data.images && data.images.length > 0) {
-                const uploadResult = await this.uploadImages(data.images);
-                if (!uploadResult.success || !uploadResult.urls) {
-                    const errorMessage = uploadResult.error || 'Failed to upload product images';
-                    return {
-                        success: false,
-                        error: errorMessage,
-                        message: errorMessage
-                    };
-                }
-                imageUrls = uploadResult.urls;
+            const formData = new FormData();
+            // Add ID
+            formData.append('productId', data.id);
+            // Add text fields
+            formData.append('name', data.name);
+            formData.append('description', data.description);
+            formData.append('price', String(data.price));
+            formData.append('category', data.category);
+            formData.append('stockQuantity', String(data.stockQuantity));
+            // Add optional fields
+            if (data.availableForPurchase !== undefined) {
+                formData.append('availableForPurchase', String(data.availableForPurchase));
             }
-            const payload = {
-                productId: data.id,
-                name: data.name.trim(),
-                description: data.description.trim(),
-                price: Number(data.price),
-                category: data.category,
-                stockQuantity: Number(data.stockQuantity),
-                availableForPurchase: data.availableForPurchase ?? true,
-                inStock: data.inStock ?? Number(data.stockQuantity) > 0,
-                ...imageUrls.length > 0 ? {
-                    images: imageUrls
-                } : {},
-                ...data.sizes && data.sizes.length > 0 ? {
-                    sizes: data.sizes
-                } : {},
-                ...data.colors && data.colors.length > 0 ? {
-                    colors: data.colors
-                } : {}
-            };
-            const tRPCBody = {
-                "0": {
-                    "json": payload
-                }
-            };
-            console.log('[Merchandise Service] Updating product with payload:', payload);
-            const response = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["apiClient"].post('/api/trpc/admin.merchandise.update', payload);
+            if (data.inStock !== undefined) {
+                formData.append('inStock', String(data.inStock));
+            }
+            // Add sizes (array)
+            if (data.sizes && data.sizes.length > 0) {
+                data.sizes.forEach((size)=>{
+                    formData.append('sizes', size);
+                });
+            }
+            // Add colors (array)
+            if (data.colors && data.colors.length > 0) {
+                data.colors.forEach((color)=>{
+                    formData.append('colors', color);
+                });
+            }
+            // Add images (array) - only new images
+            if (data.images && data.images.length > 0) {
+                data.images.forEach((image)=>{
+                    formData.append('images[]', image);
+                });
+            }
+            console.log('[Merchandise Service] Updating product with FormData');
+            const baseURL = ("TURBOPACK compile-time value", "https://cantina-membership-app.vercel.app/") || 'https://mjzctqcx-3000.asse.devtunnels.ms';
+            const token = ("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : null;
+            const response = await fetch(`${baseURL}api/admin/products/update`, {
+                method: 'POST',
+                headers: {
+                    ...token && {
+                        Authorization: `Bearer ${token}`
+                    }
+                },
+                body: formData
+            });
+            const contentType = response.headers.get('content-type');
+            const isJson = contentType?.includes('application/json');
+            let responseData;
+            try {
+                responseData = isJson ? await response.json() : await response.text();
+            } catch (error) {
+                throw new Error('Failed to parse response');
+            }
+            if (!response.ok) {
+                const errorMessage = isJson && responseData?.error?.message || isJson && responseData?.error || isJson && responseData?.message || responseData || `HTTP error! status: ${response.status}`;
+                return {
+                    success: false,
+                    error: errorMessage,
+                    message: errorMessage
+                };
+            }
+            // Handle REST API response format
+            let productData = responseData;
+            if (isJson && responseData?.data) {
+                productData = responseData.data;
+            } else if (isJson && responseData) {
+                productData = responseData;
+            }
             return {
-                success: !!response.success,
-                data: response.data,
-                error: response.error,
-                message: response.message || (response.success ? 'Product updated successfully' : response.error)
+                success: true,
+                data: productData,
+                message: 'Product updated successfully'
             };
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';

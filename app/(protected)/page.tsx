@@ -57,11 +57,21 @@ export default function ProtectedPage() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-8">
-        <div className="flex items-start justify-between">
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-balance">Welcome Back</h1>
-            <p className="text-muted-foreground mt-2 text-base">Here's your membership overview and key metrics</p>
+      <div className="space-y-6 md:space-y-8">
+        {/* Branded Header with Logo */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-border/50">
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="hidden sm:block relative w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
+              <img
+                src="/placeholder-logo.svg"
+                alt="Cantina Logo"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-balance">Welcome Back</h1>
+              <p className="text-muted-foreground mt-1 md:mt-2 text-sm md:text-base">Here's your membership overview and key metrics</p>
+            </div>
           </div>
         </div>
 
