@@ -28,6 +28,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const token = authService.getToken()
       const user = authService.getCurrentUser()
 
+      // Define public routes that don't require authentication
+      const publicRoutes = ["/login", "/privacy-policy"]
+      const isPublicRoute = publicRoutes.some(route => pathname?.startsWith(route))
+
       if (token && user && !authService.isTokenExpired()) {
         setAdminUser(user)
         setIsAuthenticated(true)
@@ -38,7 +42,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setIsAuthenticated(false)
         setAdminUser(null)
         
-        if (!pathname?.includes("/login")) {
+        // Only redirect to login if not on a public route
+        if (!isPublicRoute) {
           router.push("/login")
         }
       }
