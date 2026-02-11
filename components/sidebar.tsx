@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, LayoutDashboard, Users, Package, Bell, Settings, LogOut, ShoppingCart } from "lucide-react"
+import { Menu, LayoutDashboard, Users, Package, Bell, Settings, LogOut, ShoppingCart, Shield } from "lucide-react"
 import { useState } from "react"
 import { useAuth } from "./auth-context"
 import Image from "next/image"
@@ -9,6 +9,7 @@ import Image from "next/image"
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/" },
   { icon: Users, label: "User Management", href: "/users" },
+  { icon: Shield, label: "Admin Management", href: "/admins" },
   { icon: Package, label: "Merchandise", href: "/merchandise" },
   { icon: ShoppingCart, label: "Orders", href: "/orders" },
   { icon: Bell, label: "Notifications", href: "/notifications" },

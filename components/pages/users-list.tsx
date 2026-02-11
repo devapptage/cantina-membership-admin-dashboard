@@ -20,6 +20,7 @@ type FormattedUser = {
   membershipDate: string
   lastPurchase: string
   totalSpent: string
+  password?: string // Optional password field for editing
   rawUser: User // Keep original for editing
 }
 
@@ -144,7 +145,7 @@ export function UsersList() {
 
   const handleEditUser = (user: FormattedUser) => {
     setEditingUser(user)
-    setEditFormData({ ...user })
+    setEditFormData({ ...user, password: "" }) // Initialize password as empty
   }
 
   const handleSaveUser = async () => {
@@ -191,12 +192,14 @@ export function UsersList() {
         return
       }
 
-      // Prepare update data (DO NOT include email)
+      // Prepare update data
       const updateData: {
         userId: string
         firstName?: string
         lastName?: string
+        email?: string
         phone?: string
+        password?: string
         membershipStatus?: string
       } = {
         userId: userId, // Use the validated userId
@@ -209,7 +212,12 @@ export function UsersList() {
       // Only include fields that have changed or are provided
       if (firstName) updateData.firstName = firstName
       if (lastName) updateData.lastName = lastName
+      if (editFormData.email) updateData.email = editFormData.email
       if (editFormData.phone) updateData.phone = editFormData.phone
+      // Only include password if it's not empty
+      if (editFormData.password && editFormData.password.trim() !== "") {
+        updateData.password = editFormData.password
+      }
       if (membershipStatus) updateData.membershipStatus = membershipStatus
 
       console.log("[Users List] Updating user with data:", updateData)
@@ -564,11 +572,20 @@ export function UsersList() {
                 <input
                   type="email"
                   value={editFormData?.email || ""}
-                  readOnly
-                  disabled
-                  className="w-full px-4 py-2.5 bg-muted/30 border border-border rounded-lg text-muted-foreground cursor-not-allowed opacity-60"
+                  onChange={(e) => editFormData && setEditFormData({ ...editFormData, email: e.target.value })}
+                  className="w-full px-4 py-2.5 bg-muted/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
                 />
-                <p className="text-xs text-muted-foreground mt-1">Email cannot be changed</p>
+              </div>
+              <div>
+                <label className="text-sm font-medium text-muted-foreground mb-2 block">Password</label>
+                <input
+                  type="password"
+                  value={editFormData?.password || ""}
+                  onChange={(e) => editFormData && setEditFormData({ ...editFormData, password: e.target.value })}
+                  placeholder="Leave empty to keep current password"
+                  className="w-full px-4 py-2.5 bg-muted/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                />
+                <p className="text-xs text-muted-foreground mt-1">Leave empty to keep current password</p>
               </div>
               <div>
                 <label className="text-sm font-medium text-muted-foreground mb-2 block">Phone</label>

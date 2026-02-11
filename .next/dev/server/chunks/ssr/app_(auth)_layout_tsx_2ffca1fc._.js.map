@@ -2,5 +2,5 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///E:/Projects/v0-cantina-memeber-ship-admin-panel-main/app/%28auth%29/layout.tsx"],"sourcesContent":["import type React from \"react\"\nexport default function AuthLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return <>{children}</>\n}\n"],"names":[],"mappings":";;;;;;AACe,SAAS,WAAW,EACjC,QAAQ,EAGT;IACC,qBAAO;kBAAG;;AACZ"}}]
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///D:/Projects/cantina-membership-admin-dashboard/app/%28auth%29/layout.tsx"],"sourcesContent":["import type React from \"react\"\r\nexport default function AuthLayout({\r\n  children,\r\n}: {\r\n  children: React.ReactNode\r\n}) {\r\n  return <>{children}</>\r\n}\r\n"],"names":[],"mappings":";;;;;;AACe,SAAS,WAAW,EACjC,QAAQ,EAGT;IACC,qBAAO;kBAAG;;AACZ"}}]
 }

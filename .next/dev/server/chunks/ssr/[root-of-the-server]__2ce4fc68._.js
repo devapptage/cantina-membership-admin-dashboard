@@ -34,7 +34,7 @@ class ApiClient {
     baseURL;
     constructor(baseURL){
         // Use environment variable or default to your API endpoint
-        this.baseURL = baseURL || ("TURBOPACK compile-time value", "https://mjzctqcx-3000.asse.devtunnels.ms/") || 'https://mjzctqcx-3000.asse.devtunnels.ms';
+        this.baseURL = baseURL || 'https://cantina-membership-app.vercel.app';
     }
     getToken() {
         if ("TURBOPACK compile-time truthy", 1) return null;
@@ -293,6 +293,12 @@ function AuthProvider({ children }) {
         const checkAuth = async ()=>{
             const token = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2f$auth$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["authService"].getToken();
             const user = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2f$auth$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["authService"].getCurrentUser();
+            // Define public routes that don't require authentication
+            const publicRoutes = [
+                "/login",
+                "/privacy-policy"
+            ];
+            const isPublicRoute = publicRoutes.some((route)=>pathname?.startsWith(route));
             if (token && user && !__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2f$auth$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["authService"].isTokenExpired()) {
                 setAdminUser(user);
                 setIsAuthenticated(true);
@@ -302,7 +308,8 @@ function AuthProvider({ children }) {
                 }
                 setIsAuthenticated(false);
                 setAdminUser(null);
-                if (!pathname?.includes("/login")) {
+                // Only redirect to login if not on a public route
+                if (!isPublicRoute) {
                     router.push("/login");
                 }
             }
@@ -327,12 +334,12 @@ function AuthProvider({ children }) {
                 children: "Loading..."
             }, void 0, false, {
                 fileName: "[project]/components/auth-context.tsx",
-                lineNumber: 62,
+                lineNumber: 67,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/components/auth-context.tsx",
-            lineNumber: 61,
+            lineNumber: 66,
             columnNumber: 7
         }, this);
     }
@@ -345,7 +352,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/components/auth-context.tsx",
-        lineNumber: 67,
+        lineNumber: 72,
         columnNumber: 10
     }, this);
 }
