@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Search, Edit, X, Plus, Loader2, Trash2, User as UserIcon, Shield } from "lucide-react"
 import { adminsService } from "@/lib/api/admins"
 import type { Admin } from "@/lib/types/admins"
+import { useAuth } from "@/components/auth-context"
 
 // Type for formatted admin display
 type FormattedAdmin = {
@@ -37,6 +38,7 @@ const formatAdminForDisplay = (admin: Admin): FormattedAdmin => {
 }
 
 export function AdminsList() {
+  const { adminUser } = useAuth()
   const [searchTerm, setSearchTerm] = useState("")
   const [editingAdmin, setEditingAdmin] = useState<FormattedAdmin | null>(null)
   const [deletingAdmin, setDeletingAdmin] = useState<FormattedAdmin | null>(null)
@@ -227,6 +229,11 @@ export function AdminsList() {
   }
 
   const handleDeleteAdmin = (admin: FormattedAdmin) => {
+    // Prevent deleting self
+    if (adminUser?.id === admin.id) {
+      setError("You cannot delete yourself")
+      return
+    }
     setDeletingAdmin(admin)
   }
 
@@ -381,8 +388,13 @@ export function AdminsList() {
                           </button>
                           <button
                             onClick={() => handleDeleteAdmin(admin)}
-                            className="px-3 py-1.5 bg-destructive/10 border border-destructive/30 rounded-lg text-destructive hover:bg-destructive/20 transition-all flex items-center gap-1.5 text-xs"
-                            title="Delete Admin"
+                            disabled={adminUser?.id === admin.id}
+                            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-xs ${
+                              adminUser?.id === admin.id
+                                ? "bg-muted/30 border border-border/30 text-muted-foreground cursor-not-allowed opacity-50"
+                                : "bg-destructive/10 border border-destructive/30 text-destructive hover:bg-destructive/20"
+                            }`}
+                            title={adminUser?.id === admin.id ? "Cannot delete yourself" : "Delete Admin"}
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                             Delete
