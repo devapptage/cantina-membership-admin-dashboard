@@ -4,6 +4,7 @@ import type React from "react"
 import { authService } from "@/lib/api/auth"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -86,9 +87,17 @@ export default function LoginPage() {
 
             {/* Password Field */}
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-foreground font-semibold">
-                Password
-              </Label>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password" className="text-foreground font-semibold">
+                  Password
+                </Label>
+                <Link 
+                  href="/forgot-password"
+                  className="text-xs text-accent hover:text-accent/80 transition-colors font-medium"
+                >
+                  Forgot Password?
+                </Link>
+              </div>
               <Input
                 id="password"
                 type="password"

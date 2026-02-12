@@ -135,6 +135,125 @@ class AuthService {
       return false
     }
   }
+
+  /**
+   * Forgot Password - Send OTP to email
+   */
+  async forgotPassword(email: string): Promise<{ success: boolean; message?: string; error?: string; otp?: string }> {
+    try {
+      console.log('[Auth Service] Calling forgot password API with email:', email)
+      const response = await apiClient.post<any>('/api/trpc/admin.auth.forgotPassword', { email })
+      console.log('[Auth Service] Forgot password response:', response)
+      
+      if (response.success && response.data) {
+        return {
+          success: true,
+          message: response.data.message || 'If an account with that email exists, an OTP has been sent to your email.',
+          otp: response.data.otp, // Only in development mode
+        }
+      }
+
+      const errorMsg = typeof response.error === 'string' 
+        ? response.error 
+        : typeof response.error === 'object' && (response.error as any)?.message
+        ? (response.error as any).message
+        : typeof response.message === 'string'
+        ? response.message
+        : 'Failed to send OTP'
+
+      return {
+        success: false,
+        error: errorMsg,
+        message: errorMsg,
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred'
+      return {
+        success: false,
+        error: errorMessage,
+        message: errorMessage,
+      }
+    }
+  }
+
+  /**
+   * Verify OTP - Returns reset token
+   */
+  async verifyOTP(email: string, otp: string): Promise<{ success: boolean; message?: string; error?: string; resetToken?: string }> {
+    try {
+      console.log('[Auth Service] Calling verify OTP API with email:', email)
+      const response = await apiClient.post<any>('/api/trpc/admin.auth.verifyOTP', { email, otp })
+      console.log('[Auth Service] Verify OTP response:', response)
+      
+      if (response.success && response.data) {
+        return {
+          success: true,
+          message: response.data.message || 'OTP verified successfully.',
+          resetToken: response.data.resetToken,
+        }
+      }
+
+      const errorMsg = typeof response.error === 'string' 
+        ? response.error 
+        : typeof response.error === 'object' && (response.error as any)?.message
+        ? (response.error as any).message
+        : typeof response.message === 'string'
+        ? response.message
+        : 'Failed to verify OTP'
+
+      return {
+        success: false,
+        error: errorMsg,
+        message: errorMsg,
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred'
+      return {
+        success: false,
+        error: errorMessage,
+        message: errorMessage,
+      }
+    }
+  }
+
+  /**
+   * Reset Password - Set new password with reset token
+   */
+  async resetPassword(token: string, password: string): Promise<{ success: boolean; message?: string; error?: string }> {
+    try {
+      console.log('[Auth Service] Calling reset password API')
+      const response = await apiClient.post<any>('/api/trpc/admin.auth.resetPassword', { token, password })
+      console.log('[Auth Service] Reset password response:', response)
+      
+      if (response.success && response.data) {
+        return {
+          success: true,
+          message: response.data.message || 'Password has been reset successfully.',
+        }
+      }
+
+      const errorMsg = typeof response.error === 'string' 
+        ? response.error 
+        : typeof response.error === 'object' && (response.error as any)?.message
+        ? (response.error as any).message
+        : typeof response.message === 'string'
+        ? response.message
+        : 'Failed to reset password'
+
+      return {
+        success: false,
+        error: errorMsg,
+        message: errorMsg,
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred'
+      return {
+        success: false,
+        error: errorMessage,
+        message: errorMessage,
+      }
+    }
+  }
 }
 
 // Export singleton instance
