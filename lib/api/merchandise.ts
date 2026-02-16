@@ -144,7 +144,7 @@ class MerchandiseService {
 
       console.log('[Merchandise Service] Creating product with FormData')
       
-      const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://mjzctqcx-3000.asse.devtunnels.ms'
+      const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://cantina-membership-app.vercel.app/'
       const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null
       
       const response = await fetch(`${baseURL}api/admin/products/create`, {
@@ -253,7 +253,7 @@ class MerchandiseService {
 
       console.log('[Merchandise Service] Updating product with FormData')
       
-      const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://mjzctqcx-3000.asse.devtunnels.ms'
+      const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://cantina-membership-app.vercel.app/'
       const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null
       
       const response = await fetch(`${baseURL}api/admin/products/update`, {
