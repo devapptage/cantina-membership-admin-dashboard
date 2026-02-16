@@ -322,7 +322,7 @@ export default function OrdersPage() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <p className="font-semibold text-lg text-foreground">{order.orderId}</p>
+                      {/* <p className="font-semibold text-lg text-foreground">{order.orderId}</p> */}
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
                         {formatStatus(order.status)}
                       </span>
