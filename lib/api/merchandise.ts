@@ -147,7 +147,7 @@ class MerchandiseService {
       const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://cantina-membership-app.vercel.app/'
       const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null
       
-      const response = await fetch(`${baseURL}api/admin/products/create`, {
+      const response = await fetch(`${baseURL}api/api/admin/products/create`, {
         method: 'POST',
         headers: {
           ...(token && { Authorization: `Bearer ${token}` }),
@@ -256,7 +256,7 @@ class MerchandiseService {
       const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://cantina-membership-app.vercel.app/'
       const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null
       
-      const response = await fetch(`${baseURL}api/admin/products/update`, {
+      const response = await fetch(`${baseURL}api/api/admin/products/update`, {
         method: 'POST',
         headers: {
           ...(token && { Authorization: `Bearer ${token}` }),
