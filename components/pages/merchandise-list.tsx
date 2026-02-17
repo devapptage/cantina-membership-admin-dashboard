@@ -1,6 +1,6 @@
 "use client"
 
-import { Plus, Edit, Trash2, Package, X, Search, Loader2 } from "lucide-react"
+import { Plus, Edit, Trash2, Package, X, Search, Loader2, ChevronLeft, ChevronRight, Image as ImageIcon } from "lucide-react"
 import { useState, useEffect } from "react"
 import { merchandiseService } from "@/lib/api/merchandise"
 import type { Product } from "@/lib/types/merchandise"
@@ -15,6 +15,7 @@ type FormattedProduct = {
   stock: number
   available: boolean
   image: string
+  images: string[] // All images
   rawProduct: Product
 }
 
@@ -29,6 +30,7 @@ const formatProductForDisplay = (product: Product): FormattedProduct => {
     stock: product.stockQuantity,
     available: product.availableForPurchase && product.inStock,
     image: product.images[0] || "",
+    images: product.images || [],
     rawProduct: product,
   }
 }
@@ -40,8 +42,11 @@ export function MerchandiseList() {
   const [deletingProduct, setDeletingProduct] = useState<FormattedProduct | null>(null)
   const [formData, setFormData] = useState({ name: "", price: "", stock: "", category: "", description: "" })
   const [selectedImages, setSelectedImages] = useState<File[]>([])
+  const [imagePreviews, setImagePreviews] = useState<string[]>([])
+  const [existingImages, setExistingImages] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const [viewingImages, setViewingImages] = useState<{ product: FormattedProduct; currentIndex: number } | null>(null)
   
   // API state
   const [apiProducts, setApiProducts] = useState<FormattedProduct[]>([])
@@ -87,6 +92,8 @@ export function MerchandiseList() {
   const handleCreateProduct = () => {
     setFormData({ name: "", price: "", stock: "", category: "", description: "" })
     setSelectedImages([])
+    setImagePreviews([])
+    setExistingImages([])
     setSubmitError(null)
     setShowModal(true)
   }
@@ -101,12 +108,38 @@ export function MerchandiseList() {
       description: product.description,
     })
     setSelectedImages([])
+    setImagePreviews([])
+    setExistingImages(product.images || [])
     setSubmitError(null)
     setShowModal(true)
   }
 
   const handleDeleteProduct = (product: FormattedProduct) => {
     setDeletingProduct(product)
+  }
+
+  const handleViewImages = (product: FormattedProduct) => {
+    if (product.images.length > 0) {
+      setViewingImages({ product, currentIndex: 0 })
+    }
+  }
+
+  const nextImage = () => {
+    if (viewingImages && viewingImages.currentIndex < viewingImages.product.images.length - 1) {
+      setViewingImages({
+        ...viewingImages,
+        currentIndex: viewingImages.currentIndex + 1
+      })
+    }
+  }
+
+  const previousImage = () => {
+    if (viewingImages && viewingImages.currentIndex > 0) {
+      setViewingImages({
+        ...viewingImages,
+        currentIndex: viewingImages.currentIndex - 1
+      })
+    }
   }
 
   const confirmDelete = async () => {
@@ -146,7 +179,29 @@ export function MerchandiseList() {
     if (e.target.files) {
       const files = Array.from(e.target.files)
       setSelectedImages(files)
+      
+      // Create image previews
+      const previews: string[] = []
+      files.forEach(file => {
+        const reader = new FileReader()
+        reader.onloadend = () => {
+          previews.push(reader.result as string)
+          if (previews.length === files.length) {
+            setImagePreviews(previews)
+          }
+        }
+        reader.readAsDataURL(file)
+      })
     }
+  }
+
+  const removeExistingImage = (index: number) => {
+    setExistingImages(prev => prev.filter((_, i) => i !== index))
+  }
+
+  const removeNewImage = (index: number) => {
+    setSelectedImages(prev => prev.filter((_, i) => i !== index))
+    setImagePreviews(prev => prev.filter((_, i) => i !== index))
   }
 
   const saveProduct = async () => {
@@ -168,6 +223,12 @@ export function MerchandiseList() {
       return
     }
 
+    // Check if at least one image is provided (existing or new)
+    if (existingImages.length === 0 && selectedImages.length === 0) {
+      setSubmitError("At least one product image is required")
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitError(null)
 
@@ -180,7 +241,10 @@ export function MerchandiseList() {
         stockQuantity: parseInt(formData.stock),
         availableForPurchase: true,
         inStock: parseInt(formData.stock) > 0,
+        // For new images (File objects)
         images: selectedImages.length > 0 ? selectedImages : undefined,
+        // For existing images (URLs) - only when editing
+        existingImages: editingProduct && existingImages.length > 0 ? existingImages : undefined,
       }
 
       let response
@@ -200,6 +264,8 @@ export function MerchandiseList() {
         setShowModal(false)
         setEditingProduct(null)
         setSelectedImages([])
+        setImagePreviews([])
+        setExistingImages([])
         
         // Refresh products list
         const refreshResponse = await merchandiseService.getAllProducts({
@@ -289,12 +355,26 @@ export function MerchandiseList() {
               >
                 <div className="flex items-start justify-between gap-6">
                   <div className="flex items-start gap-4 flex-1">
-                    {product.image ? (
-                      <img 
-                        src={product.image} 
-                        alt={product.name}
-                        className="w-16 h-16 rounded-xl object-cover border border-accent/20"
-                      />
+                    {product.images.length > 0 ? (
+                      <div 
+                        className="relative w-16 h-16 flex-shrink-0 cursor-pointer group"
+                        onClick={() => handleViewImages(product)}
+                        title="Click to view all images"
+                      >
+                        <img 
+                          src={product.images[0]} 
+                          alt={product.name}
+                          className="w-16 h-16 rounded-xl object-cover border border-accent/20 group-hover:border-accent transition-colors"
+                        />
+                        {product.images.length > 1 && (
+                          <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-card group-hover:scale-110 transition-transform">
+                            {product.images.length}
+                          </span>
+                        )}
+                        <div className="absolute inset-0 bg-black/40 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <ImageIcon className="w-6 h-6 text-white" />
+                        </div>
+                      </div>
                     ) : (
                       <div className="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0 border border-accent/20">
                         <Package className="w-8 h-8 text-muted-foreground" />
@@ -387,6 +467,10 @@ export function MerchandiseList() {
                 onClick={() => {
                   setShowModal(false)
                   setEditingProduct(null)
+                  setSelectedImages([])
+                  setImagePreviews([])
+                  setExistingImages([])
+                  setSubmitError(null)
                 }}
                 className="text-muted-foreground hover:text-foreground transition-colors p-1"
               >
@@ -453,6 +537,57 @@ export function MerchandiseList() {
               {/* Image Upload */}
               <div>
                 <label className="text-sm font-medium text-muted-foreground block mb-2">Product Images</label>
+                
+                {/* Existing Images */}
+                {existingImages.length > 0 && (
+                  <div className="mb-3">
+                    <p className="text-xs text-muted-foreground mb-2">Current images:</p>
+                    <div className="grid grid-cols-3 gap-2">
+                      {existingImages.map((imgUrl, index) => (
+                        <div key={index} className="relative group">
+                          <img 
+                            src={imgUrl} 
+                            alt={`Product ${index + 1}`} 
+                            className="w-full h-24 rounded-lg object-cover border border-border"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeExistingImage(index)}
+                            className="absolute -top-2 -right-2 bg-destructive text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* New Image Previews */}
+                {imagePreviews.length > 0 && (
+                  <div className="mb-3">
+                    <p className="text-xs text-muted-foreground mb-2">New images to upload:</p>
+                    <div className="grid grid-cols-3 gap-2">
+                      {imagePreviews.map((preview, index) => (
+                        <div key={index} className="relative group">
+                          <img 
+                            src={preview} 
+                            alt={`New ${index + 1}`} 
+                            className="w-full h-24 rounded-lg object-cover border border-accent/30"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeNewImage(index)}
+                            className="absolute -top-2 -right-2 bg-destructive text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <input
                   type="file"
                   accept="image/*"
@@ -460,17 +595,9 @@ export function MerchandiseList() {
                   onChange={handleImageChange}
                   className="w-full px-4 py-2.5 bg-muted/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-accent/10 file:text-accent hover:file:bg-accent/20"
                 />
-                {selectedImages.length > 0 && (
-                  <div className="mt-2 text-sm text-muted-foreground">
-                    {selectedImages.length} image(s) selected
-                  </div>
-                )}
-                {editingProduct && editingProduct.image && selectedImages.length === 0 && (
-                  <div className="mt-2">
-                    <p className="text-xs text-muted-foreground mb-1">Current image:</p>
-                    <img src={editingProduct.image} alt={editingProduct.name} className="w-20 h-20 rounded-lg object-cover border border-border" />
-                  </div>
-                )}
+                <p className="text-xs text-muted-foreground mt-1">
+                  You can select multiple images. Total: {existingImages.length + selectedImages.length} image(s)
+                </p>
               </div>
 
               {submitError && (
@@ -484,6 +611,10 @@ export function MerchandiseList() {
                   onClick={() => {
                     setShowModal(false)
                     setEditingProduct(null)
+                    setSelectedImages([])
+                    setImagePreviews([])
+                    setExistingImages([])
+                    setSubmitError(null)
                   }}
                   className="flex-1 px-4 py-2.5 border border-border rounded-lg text-foreground hover:bg-muted transition-colors font-medium"
                 >
@@ -532,6 +663,84 @@ export function MerchandiseList() {
                 Delete
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Image Viewer Modal */}
+      {viewingImages && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="relative w-full max-w-4xl">
+            {/* Close Button */}
+            <button
+              onClick={() => setViewingImages(null)}
+              className="absolute -top-12 right-0 text-white hover:text-accent transition-colors p-2"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Image Container */}
+            <div className="relative bg-card/10 rounded-2xl overflow-hidden">
+              <img
+                src={viewingImages.product.images[viewingImages.currentIndex]}
+                alt={`${viewingImages.product.name} - Image ${viewingImages.currentIndex + 1}`}
+                className="w-full h-auto max-h-[70vh] object-contain"
+              />
+
+              {/* Navigation Arrows */}
+              {viewingImages.product.images.length > 1 && (
+                <>
+                  <button
+                    onClick={previousImage}
+                    disabled={viewingImages.currentIndex === 0}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    disabled={viewingImages.currentIndex === viewingImages.product.images.length - 1}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                </>
+              )}
+
+              {/* Image Counter */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full text-sm font-medium">
+                {viewingImages.currentIndex + 1} / {viewingImages.product.images.length}
+              </div>
+            </div>
+
+            {/* Product Info */}
+            <div className="mt-4 text-center">
+              <h3 className="text-xl font-bold text-white">{viewingImages.product.name}</h3>
+              <p className="text-white/70 mt-1">{viewingImages.product.description}</p>
+            </div>
+
+            {/* Thumbnail Strip */}
+            {viewingImages.product.images.length > 1 && (
+              <div className="flex gap-2 mt-4 justify-center overflow-x-auto pb-2">
+                {viewingImages.product.images.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setViewingImages({ ...viewingImages, currentIndex: index })}
+                    className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                      index === viewingImages.currentIndex
+                        ? "border-accent scale-110"
+                        : "border-white/30 hover:border-white/60"
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}

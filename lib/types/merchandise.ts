@@ -60,5 +60,6 @@ export interface CreateProductData {
 
 export interface UpdateProductData extends CreateProductData {
   id: string
+  existingImages?: string[] // Existing image URLs to keep
 }
 

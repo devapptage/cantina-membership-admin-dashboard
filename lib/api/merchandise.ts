@@ -244,6 +244,13 @@ class MerchandiseService {
         })
       }
       
+      // Add existing images (URLs to keep)
+      if (data.existingImages && data.existingImages.length > 0) {
+        data.existingImages.forEach((imageUrl) => {
+          formData.append('existingImages[]', imageUrl)
+        })
+      }
+      
       // Add images (array) - only new images
       if (data.images && data.images.length > 0) {
         data.images.forEach((image) => {
