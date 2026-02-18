@@ -322,7 +322,7 @@ export default function OrdersPage() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      {/* <p className="font-semibold text-lg text-foreground">{order.orderId}</p> */}
+                      <p className="font-semibold text-lg text-foreground">{order.orderNumber}</p>
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
                         {formatStatus(order.status)}
                       </span>
@@ -416,7 +416,7 @@ export default function OrdersPage() {
                 <label className="text-sm font-medium text-muted-foreground block mb-2">Order ID</label>
                 <input
                   type="text"
-                  value={editingOrder.orderId}
+                  value={editingOrder.orderNumber}
                   disabled
                   className="w-full px-4 py-2.5 bg-muted/30 border border-border rounded-lg text-muted-foreground"
                 />
@@ -493,7 +493,7 @@ export default function OrdersPage() {
             <h2 className="text-2xl font-bold">Delete Order?</h2>
             <p className="text-muted-foreground">
               Are you sure you want to delete order{" "}
-              <span className="font-semibold text-foreground">"{deletingOrder.orderId}"</span>?
+              <span className="font-semibold text-foreground">"{deletingOrder.orderNumber}"</span>?
               This action cannot be undone.
             </p>
             <div className="flex gap-3">

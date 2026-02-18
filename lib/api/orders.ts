@@ -27,6 +27,7 @@ class OrdersService {
       type: apiOrder.type,
       items: apiOrder.merchandiseItems || [],
       itemCount,
+      orderNumber: apiOrder.OrderNumber || `ORD-${shortUserId.toUpperCase()}-${apiOrder._id.slice(-4).toUpperCase()}`,
       totalAmount: apiOrder.amount,
       status: apiOrder.status,
       paymentStatus: apiOrder.status === 'completed' ? 'completed' : apiOrder.status === 'cancelled' ? 'failed' : 'pending',

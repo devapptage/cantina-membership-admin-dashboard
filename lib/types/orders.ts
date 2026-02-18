@@ -20,6 +20,7 @@ export interface ApiOrder {
   currency: string
   status: 'pending' | 'processing' | 'in_transit' | 'delivered' | 'completed' | 'cancelled'
   merchandiseItems?: MerchandiseItem[]
+  OrderNumber?: string
   stripePaymentIntentId?: string
   user?: {
     id: string | null
@@ -42,6 +43,7 @@ export interface Order {
   type: 'merchandise' | 'event' | 'other'
   items: MerchandiseItem[]
   itemCount: number
+  orderNumber?: string
   totalAmount: number
   status: 'pending' | 'processing' | 'in_transit' | 'delivered' | 'completed' | 'cancelled'
   paymentStatus: 'pending' | 'completed' | 'failed' | 'refunded'
